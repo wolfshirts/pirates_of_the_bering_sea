@@ -5,6 +5,7 @@
 #include<allegro5/fixed.h>
 #include<cmath>
 #include<iostream>
+#include"Bouy.h"
 #include "PlayerShip.h"
 
 PlayerShip::PlayerShip(int x, int y)
@@ -14,6 +15,7 @@ PlayerShip::PlayerShip(int x, int y)
 	this->ship_y = y;
 	this->ship_x_center = al_get_bitmap_width(boatGraphic) / 2;
 	this->ship_y_center = al_get_bitmap_height(boatGraphic) / 2;
+	//this->shipBouys.push_back(new Bouy(ship_x + 1, ship_y));
 }
 
 ALLEGRO_BITMAP* PlayerShip::get_boat_graphic()
@@ -29,10 +31,19 @@ void PlayerShip::load_assets()
 void PlayerShip::unload_assets()
 {
 	al_destroy_bitmap(this->boatGraphic);
+	//offload bouy assets. need to write that into bouys.
 }
 
 void PlayerShip::handle_input(ALLEGRO_EVENT& e)
 {
+	if (e.keyboard.keycode == ALLEGRO_KEY_SPACE) {
+		if (canLaunchBouy == true && shipBouys.size() < maxBouys) {
+			Bouy* myBouy = new Bouy(ship_x + 15, ship_y);
+			shipBouys.push_back(myBouy);
+			canLaunchBouy = false;
+			bouyTimer = 0;
+		}
+	}
 	if (e.keyboard.keycode == ALLEGRO_KEY_UP ) {
 		player_velocity += 0.13f;
 		if (player_velocity > max_velocity) {
@@ -60,6 +71,13 @@ void PlayerShip::handle_input(ALLEGRO_EVENT& e)
 
 void PlayerShip::update()
 {
+	//count how many frames we've had.
+	bouyTimer += 1; //called once per frame.
+
+	if (bouyTimer >= bouyLaunchTime && canLaunchBouy == false) {
+		canLaunchBouy = true;
+		bouyTimer = 0;
+	}
 	float playerAngleInRad = (player_angle * 3.14159 / 180);
 	ship_x_velocity =  player_velocity * sin(playerAngleInRad);
 	ship_y_velocity = player_velocity * cos(playerAngleInRad);
@@ -69,6 +87,11 @@ void PlayerShip::update()
 
 void PlayerShip::draw()
 {
+	if (!shipBouys.empty()) {
+		for (Bouy* x : shipBouys) {
+			x->draw();
+		}
+	}
 	//Drawing rotated bitmap, from center of ship, putting it at ship_x, and ship_y, get radians float*pi/180, no flags.
 	al_draw_rotated_bitmap(boatGraphic, ship_x_center, ship_y_center, ship_x, ship_y, (player_angle * 3.14159 / 180), 0);
 }

@@ -30,6 +30,9 @@
     <ClCompile Include="PlayerShip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bouy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bouy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

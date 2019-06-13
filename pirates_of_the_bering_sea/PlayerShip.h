@@ -3,12 +3,15 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include<allegro5/fixed.h>
+#include <vector>
+#include"Bouy.h"
 
 class PlayerShip
 {
 public:
 	//create the ship and tell it where it is.
 	PlayerShip(int x, int y);
+	~PlayerShip();
 	//Figure out our heading and rotate the boat accordingly.
 	ALLEGRO_BITMAP* get_boat_graphic();
 	
@@ -43,5 +46,10 @@ private:
 	float max_velocity = .1f;
 	float ship_x_center;
 	float ship_y_center;
+	std::vector<Bouy*> shipBouys;
+	int bouyTimer = 0;
+	int bouyLaunchTime = 180; //one every three seconds, upgradable;
+	int maxBouys = 10; //our max bouys, can be adjusted later via items.
+	bool canLaunchBouy = true;
 };
 

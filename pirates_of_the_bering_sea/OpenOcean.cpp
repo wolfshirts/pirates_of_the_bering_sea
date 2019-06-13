@@ -20,6 +20,8 @@ void OpenOcean::unload_content()
 
 void OpenOcean::handle_events(ALLEGRO_EVENT& e)
 {
+	//Some stuff gets passed to the player, other stuff
+	//is handled by the ocean
 	if (e.keyboard.keycode == ALLEGRO_KEY_LEFT) {
 		player->handle_input(e);
 	}
@@ -30,6 +32,9 @@ void OpenOcean::handle_events(ALLEGRO_EVENT& e)
 		player->handle_input(e);
 	}
 	if (e.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+		player->handle_input(e);
+	}
+	if (e.keyboard.keycode == ALLEGRO_KEY_SPACE) {
 		player->handle_input(e);
 	}
 }
