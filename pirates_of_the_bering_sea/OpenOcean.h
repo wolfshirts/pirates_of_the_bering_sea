@@ -3,6 +3,7 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include "SceneManager.h";
+#include "PlayerShip.h";
 
 class OpenOcean
 {
@@ -18,11 +19,8 @@ public:
 	~OpenOcean();
 private:
 	SceneManager* manager;
-	int boatX = 10;
-	int boatY = 10;
-	int boatVelocityX = 0;
-	int boatVelocityY = 0;
-	int boatThrust = 0;
-	ALLEGRO_BITMAP* boatGraphic = nullptr;
+	int player_x = 400;
+	int player_y = 400;
+	PlayerShip* player = new PlayerShip(player_x, player_y);
 };
 

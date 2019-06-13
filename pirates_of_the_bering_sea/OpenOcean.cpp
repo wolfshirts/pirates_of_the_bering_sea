@@ -7,15 +7,11 @@
 OpenOcean::OpenOcean(SceneManager* sceneManager)
 {
 	this->manager = sceneManager;
-	boatX = 10;
-	boatY = 10;
-	boatVelocityX = 0;
 }
 
 void OpenOcean::load_content()
 {
-	this->boatGraphic = al_load_bitmap("Assets/boat.jpg");
-	al_convert_mask_to_alpha(this->boatGraphic, al_map_rgb(255, 0, 255));
+	
 }
 
 void OpenOcean::unload_content()
@@ -24,20 +20,29 @@ void OpenOcean::unload_content()
 
 void OpenOcean::handle_events(ALLEGRO_EVENT& e)
 {
+	if (e.keyboard.keycode == ALLEGRO_KEY_LEFT) {
+		player->handle_input(e);
+	}
+	if (e.keyboard.keycode == ALLEGRO_KEY_RIGHT) {
+		player->handle_input(e);
+	}
 	if (e.keyboard.keycode == ALLEGRO_KEY_UP) {
-		boatThrust += 1;
+		player->handle_input(e);
+	}
+	if (e.keyboard.keycode == ALLEGRO_KEY_DOWN) {
+		player->handle_input(e);
 	}
 }
 
 void OpenOcean::game_logic()
 {
-	boatX += boatVelocityX;
+	player->update();
 }
 
 void OpenOcean::draw()
 {
 	al_clear_to_color(al_map_rgb(0, 50, 255));
-	al_draw_bitmap(this->boatGraphic, boatX, boatY, 0);
+	player->draw();
 }
 
 OpenOcean::~OpenOcean()
