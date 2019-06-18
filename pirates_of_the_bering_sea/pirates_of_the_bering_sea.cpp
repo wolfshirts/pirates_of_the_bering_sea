@@ -16,8 +16,11 @@ int main()
 	al_init_ttf_addon();
 	al_init_image_addon();
 	
+	const int SCREEN_WIDTH = 800;
+	const int SCREEN_HEIGHT = 600;
+
 	//Init display
-	ALLEGRO_DISPLAY* display = al_create_display(800, 600);
+	ALLEGRO_DISPLAY* display = al_create_display(SCREEN_WIDTH, SCREEN_HEIGHT);
 	
 	//Get the keyboard running
 	ALLEGRO_EVENT_QUEUE* queue = al_create_event_queue();

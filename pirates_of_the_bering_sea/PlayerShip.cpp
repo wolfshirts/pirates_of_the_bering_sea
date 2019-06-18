@@ -15,7 +15,6 @@ PlayerShip::PlayerShip(int x, int y)
 	this->ship_y = y;
 	this->ship_x_center = al_get_bitmap_width(boatGraphic) / 2;
 	this->ship_y_center = al_get_bitmap_height(boatGraphic) / 2;
-	//this->shipBouys.push_back(new Bouy(ship_x + 1, ship_y));
 }
 
 ALLEGRO_BITMAP* PlayerShip::get_boat_graphic()

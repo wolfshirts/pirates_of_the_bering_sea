@@ -22,5 +22,6 @@ private:
 	int player_x = 400;
 	int player_y = 400;
 	PlayerShip* player = new PlayerShip(player_x, player_y);
+	ALLEGRO_FONT* hudFont = nullptr;
 };
 

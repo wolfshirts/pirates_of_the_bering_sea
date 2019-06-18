@@ -12,7 +12,6 @@ public:
 	//create the ship and tell it where it is.
 	PlayerShip(int x, int y);
 	~PlayerShip();
-	//Figure out our heading and rotate the boat accordingly.
 	ALLEGRO_BITMAP* get_boat_graphic();
 	
 	void load_assets();

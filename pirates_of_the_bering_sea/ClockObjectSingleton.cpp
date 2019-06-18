@@ -52,3 +52,8 @@ std::string ClockObjectSingleton::get_game_time()
 	}
 	return clockHours + ":" + clockMinutes;
 }
+
+std::string ClockObjectSingleton::get_game_day()
+{
+	return std::to_string(this->days);
+}
