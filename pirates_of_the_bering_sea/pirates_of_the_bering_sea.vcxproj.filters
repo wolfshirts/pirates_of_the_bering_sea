@@ -33,9 +33,9 @@
     <ClCompile Include="Bouy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="ClockObjectSingleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h">
@@ -53,5 +53,11 @@
     <ClInclude Include="Bouy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ClockObjectSingleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

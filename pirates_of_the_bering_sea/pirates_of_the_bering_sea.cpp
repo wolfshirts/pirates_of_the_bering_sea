@@ -6,7 +6,7 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include<allegro5/allegro_image.h>
-
+#include"ClockObjectSingleton.h"
 #include "SceneManager.h"
 
 int main()
@@ -29,15 +29,14 @@ int main()
 	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
 	al_register_event_source(queue, al_get_timer_event_source(timer));
 	al_start_timer(timer);
-
+	//Create our game time singleton
+	ClockObjectSingleton* clockObject = clockObject->ClockInstance();
 	SceneManager sceneManager = SceneManager(display); //init our scenemanager with a pointer to our display.
 	bool gameOver = false;
 	
 	while (!gameOver) {
 		ALLEGRO_EVENT event; //get event
 		
-		//Handle the events here, if there are no events continue running.
-		//if (!al_is_event_queue_empty(queue)) {
 			al_wait_for_event(queue, &event);
 			if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 				gameOver = true;
@@ -45,16 +44,13 @@ int main()
 			else if (event.type == ALLEGRO_EVENT_TIMER) {
 				sceneManager.game_logic();
 				sceneManager.draw();
+				clockObject->ClockInstance()->update();
 			}
-			else //(event.type == ALLEGRO_KEY_LEFT) 
+			else 
 			{
 				//Send the keydown to the scenemanager
 				sceneManager.handle_input(event);
 			}
-		//}
-		//sceneManager.handle_input();
-		//sceneManager.game_logic();
-		//sceneManager.draw();
 		al_flip_display(); //flip display makes buffer visible to user.
 	}
 	
