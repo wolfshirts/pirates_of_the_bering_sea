@@ -80,8 +80,15 @@ void PlayerShip::update()
 	float playerAngleInRad = (player_angle * 3.14159 / 180);
 	ship_x_velocity =  player_velocity * sin(playerAngleInRad);
 	ship_y_velocity = player_velocity * cos(playerAngleInRad);
-	ship_x += ship_x_velocity;
-	ship_y -= ship_y_velocity;
+	//Todo remove later, ship needs to be confined to screen for now.
+	if (ship_x_velocity + ship_x >= 800 || ship_x + ship_x_velocity <= 0 ||
+		 ship_y - ship_y_velocity >= 600 || ship_y - ship_x_velocity <= 0) {
+		return;
+	}
+	else {
+		ship_x += ship_x_velocity;
+		ship_y -= ship_y_velocity;
+	}
 }
 
 void PlayerShip::draw()
