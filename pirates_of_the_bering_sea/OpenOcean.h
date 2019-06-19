@@ -19,6 +19,7 @@ public:
 	void game_logic();
 	void draw();
 	void add_bouy();
+	void generate_crab_school();
 	
 	~OpenOcean();
 private:

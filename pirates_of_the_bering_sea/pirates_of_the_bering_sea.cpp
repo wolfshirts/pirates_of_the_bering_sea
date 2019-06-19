@@ -7,6 +7,7 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include<allegro5/allegro_image.h>
+#include<allegro5/allegro_primitives.h>
 #include"ClockObjectSingleton.h"
 #include "SceneManager.h"
 
@@ -16,6 +17,7 @@ int main()
 	al_init_font_addon();
 	al_init_ttf_addon();
 	al_init_image_addon();
+	al_init_primitives_addon();
 	
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 600;
