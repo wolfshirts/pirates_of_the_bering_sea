@@ -57,3 +57,8 @@ std::string ClockObjectSingleton::get_game_day()
 {
 	return std::to_string(this->days);
 }
+
+uint64_t ClockObjectSingleton::get_ticks()
+{
+	return ticks;
+}

@@ -1,12 +1,15 @@
 #pragma once
 #include <allegro5/allegro.h>
 #include <vector>
+#include"ClockObjectSingleton.h"
+
 class Bouy
 {
 	//Bouy is tied to the ship, it contains a vector of bouys.
 	//Which is initially empty. Bouy gets co-ords where it's set.
 public:
 	Bouy(float x, float y);
+	void add_crab(int crab); //add crab to pot.
 	void draw();
 	~Bouy();
 private:
@@ -21,5 +24,6 @@ private:
 	std::vector<ALLEGRO_BITMAP*> bouyVector;
 	int playSpeed = 60;
 	int updateCounter = 0;
+	int crabCount = 0;
 };
 

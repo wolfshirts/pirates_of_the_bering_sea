@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include<ctime>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
@@ -35,6 +36,10 @@ int main()
 	//Create our game time singleton
 	ClockObjectSingleton* clockObject = clockObject->ClockInstance();
 	SceneManager sceneManager = SceneManager(display); //init our scenemanager with a pointer to our display.
+
+	//Seed our rand.
+	srand(time(NULL));
+
 	bool gameOver = false;
 	
 	while (!gameOver) {

@@ -36,6 +36,9 @@
     <ClCompile Include="ClockObjectSingleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CrabSchool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SceneManager.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ClockObjectSingleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CrabSchool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

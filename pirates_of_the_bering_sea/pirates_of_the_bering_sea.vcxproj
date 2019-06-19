@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="Bouy.cpp" />
     <ClCompile Include="ClockObjectSingleton.cpp" />
+    <ClCompile Include="CrabSchool.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="OpenOcean.cpp" />
     <ClCompile Include="pirates_of_the_bering_sea.cpp" />
@@ -174,6 +175,7 @@
   <ItemGroup>
     <ClInclude Include="Bouy.h" />
     <ClInclude Include="ClockObjectSingleton.h" />
+    <ClInclude Include="CrabSchool.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="OpenOcean.h" />
     <ClInclude Include="PlayerShip.h" />

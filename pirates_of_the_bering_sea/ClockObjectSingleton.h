@@ -7,6 +7,7 @@ public:
 	static ClockObjectSingleton* ClockInstance(); //on first instantiation always pass timer.
 	std::string get_game_time();
 	std::string get_game_day();
+	uint64_t get_ticks();
 	void update();
 
 private:

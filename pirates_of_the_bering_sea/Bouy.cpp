@@ -18,6 +18,11 @@ Bouy::Bouy(float x, float y)
 	bouyVector.push_back(fourthAnimation);
 }
 
+void Bouy::add_crab(int crab)
+{
+	crabCount += crab;
+}
+
 void Bouy::draw() {
 	//Updating logic and draw in the draw method. At the moment there's no reason to decouple it.
 	updateCounter++;
