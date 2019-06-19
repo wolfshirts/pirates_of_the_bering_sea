@@ -6,11 +6,13 @@
 #include <vector>
 #include"Bouy.h"
 
+class OpenOcean;
+
 class PlayerShip
 {
 public:
 	//create the ship and tell it where it is.
-	PlayerShip(int x, int y);
+	PlayerShip(int x, int y, OpenOcean* manager);
 	~PlayerShip();
 	ALLEGRO_BITMAP* get_boat_graphic();
 	
@@ -50,5 +52,6 @@ private:
 	int bouyLaunchTime = 180; //one every three seconds, upgradable;
 	int maxBouys = 10; //our max bouys, can be adjusted later via items.
 	bool canLaunchBouy = true;
+	OpenOcean* manager = nullptr;
 };
 

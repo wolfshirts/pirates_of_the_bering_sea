@@ -52,12 +52,24 @@ void OpenOcean::game_logic()
 void OpenOcean::draw()
 {
 	al_clear_to_color(al_map_rgb(0, 50, 255));
+	if (!bouy_vector.empty()) {
+		for (Bouy* x : bouy_vector) {
+			x->draw();
+		}
+	}
 	player->draw();
+
 	//al_draw_text(hudFont, al_map_rgb(0, 0, 0), 0, 0, 0, "Pirates of the Bering Sea");
 	std::string time = ClockObjectSingleton::ClockInstance()->get_game_time();
 	std::string days = "Day: " + ClockObjectSingleton::ClockInstance()->get_game_day();
 	al_draw_text(hudFont, al_map_rgb(255, 255, 255), 0, 0, 0, time.c_str());
 	al_draw_text(hudFont, al_map_rgb(255, 255, 255), 0, 20, 0, days.c_str());
+}
+
+void OpenOcean::add_bouy()
+{
+	Bouy* myBouy = new Bouy(player->get_ship_x() + 15, player->get_ship_y());
+	bouy_vector.push_back(myBouy);
 }
 
 OpenOcean::~OpenOcean()

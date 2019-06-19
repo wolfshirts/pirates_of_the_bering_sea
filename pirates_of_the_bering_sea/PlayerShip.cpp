@@ -7,14 +7,16 @@
 #include<iostream>
 #include"Bouy.h"
 #include "PlayerShip.h"
+#include "OpenOcean.h"
 
-PlayerShip::PlayerShip(int x, int y)
+PlayerShip::PlayerShip(int x, int y, OpenOcean *manager)
 {
 	this->load_assets();
 	this->ship_x = x;
 	this->ship_y = y;
 	this->ship_x_center = al_get_bitmap_width(boatGraphic) / 2;
 	this->ship_y_center = al_get_bitmap_height(boatGraphic) / 2;
+	this->manager = manager;
 }
 
 ALLEGRO_BITMAP* PlayerShip::get_boat_graphic()
@@ -37,10 +39,9 @@ void PlayerShip::handle_input(ALLEGRO_EVENT& e)
 {
 	if (e.keyboard.keycode == ALLEGRO_KEY_SPACE) {
 		if (canLaunchBouy == true && shipBouys.size() < maxBouys) {
-			Bouy* myBouy = new Bouy(ship_x + 15, ship_y);
-			shipBouys.push_back(myBouy);
 			canLaunchBouy = false;
 			bouyTimer = 0;
+			manager->add_bouy();
 		}
 	}
 	if (e.keyboard.keycode == ALLEGRO_KEY_UP ) {
@@ -93,11 +94,6 @@ void PlayerShip::update()
 
 void PlayerShip::draw()
 {
-	if (!shipBouys.empty()) {
-		for (Bouy* x : shipBouys) {
-			x->draw();
-		}
-	}
 	//Drawing rotated bitmap, from center of ship, putting it at ship_x, and ship_y, get radians float*pi/180, no flags.
 	al_draw_rotated_bitmap(boatGraphic, ship_x_center, ship_y_center, ship_x, ship_y, (player_angle * 3.14159 / 180), 0);
 }
