@@ -11,6 +11,10 @@ public:
 	Bouy(float x, float y);
 	void add_crab(int crab); //add crab to pot.
 	void draw();
+	int get_x();
+	int get_y();
+	bool can_add_crab();
+	std::vector<int> get_bouy_rect();
 	~Bouy();
 private:
 	//bouy x, y co-ords
@@ -25,5 +29,6 @@ private:
 	int playSpeed = 60;
 	int updateCounter = 0;
 	int crabCount = 0;
+	int setTime = 0;
 };
 

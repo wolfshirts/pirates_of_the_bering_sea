@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 #include "PlayerShip.h"
 #include "Bouy.h"
+#include"CrabSchool.h"
 
 class OpenOcean
 {
@@ -27,5 +28,6 @@ private:
 	PlayerShip* player = new PlayerShip(player_x, player_y, this);
 	ALLEGRO_FONT* hudFont = nullptr;
 	std::vector<Bouy*> bouy_vector;
+	CrabSchool* crabs = nullptr;
 };
 

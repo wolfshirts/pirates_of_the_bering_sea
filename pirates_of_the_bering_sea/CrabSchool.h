@@ -3,10 +3,11 @@
 class CrabSchool
 {
 public:
-	CrabSchool(int x, int y, int bottom_x, int bottom_y, int crabs); //Set rect size of school and number of crab.
+	CrabSchool(int x, int y, int width, int height, int crabs); //Set rect size of school and number of crab.
 	void update();
 	void remove_crab(int crab);
 	void change_crab_direction(int x, int y);
+	int get_school_size();
 	std::vector<int> get_crab_location();
 	~CrabSchool();
 private:

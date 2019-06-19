@@ -1,4 +1,6 @@
 #include "Bouy.h"
+#include"ClockObjectSingleton.h"
+#include<iostream>
 #include <allegro5/allegro.h>
 
 Bouy::Bouy(float x, float y)
@@ -16,11 +18,13 @@ Bouy::Bouy(float x, float y)
 	bouyVector.push_back(secondAnimation);
 	bouyVector.push_back(thirdAnimation);
 	bouyVector.push_back(fourthAnimation);
+	setTime = ClockObjectSingleton::ClockInstance()->get_ticks();
 }
 
 void Bouy::add_crab(int crab)
 {
 	crabCount += crab;
+	std::cout << "I just caught " << crab << " crab." << std::endl;
 }
 
 void Bouy::draw() {
@@ -34,6 +38,32 @@ void Bouy::draw() {
 	}
 
 	al_draw_bitmap(bouyVector[imageCounter], bouy_x, bouy_y, 0);
+}
+
+int Bouy::get_x()
+{
+	return static_cast<int>(bouy_x);
+}
+
+int Bouy::get_y()
+{
+	return static_cast<int>(bouy_y);
+}
+
+bool Bouy::can_add_crab()
+{
+	if (ClockObjectSingleton::ClockInstance()->get_ticks() - setTime % 180 == 0)
+		return true;
+	return false;
+}
+
+std::vector<int> Bouy::get_bouy_rect()
+{
+	int x = static_cast<int>(bouy_x);
+	int y = static_cast<int>(bouy_y);
+	int width = 5;
+	int height = 5;
+	return std::vector<int>{x, y, width, height};
 }
 
 Bouy::~Bouy()
